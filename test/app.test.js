@@ -45,15 +45,21 @@ describe("GET /apps", () => {
         expect(res.body).to.be.an("array");
         let sorted = true;
         let i = 0;
+        // iterate once less than the length of the array
+        // because we're comparing 2 items in the array at a time
         while (i < res.body.length - 1) {
+          // compare book at `i` with next book at `i + 1`
           const appAtI = res.body[i];
           const appAtIPlus1 = res.body[i + 1];
-          if (appAtIPlus1["App"] < appAtI["App"]) {
+          // if the next app is less than the app at i
+          if (appAtIPlus1["App"].toLowerCase() < appAtI["App"].toLowerCase()) {
+            // apps were not sorted correctly (should be ascending)
             sorted = false;
-            break;
+            break; // exit the loop
           }
           i++;
         }
+        expect(sorted).to.be.true;
       });
   });
 
@@ -67,15 +73,21 @@ describe("GET /apps", () => {
         expect(res.body).to.be.an("array");
         let sorted = true;
         let i = 0;
+        // iterate once less than the length of the array
+        // because we're comparing 2 items in the array at a time
         while (i < res.body.length - 1) {
+          // compare book at `i` with next book at `i + 1`
           const appAtI = res.body[i];
           const appAtIPlus1 = res.body[i + 1];
-          if (appAtIPlus1["Rating"] < appAtI["Rating"]) {
+          // if the next app is more than the app at i
+          if (appAtIPlus1["Rating"] > appAtI["Rating"]) {
+            // the apps were not sorted correctly (should be descending)
             sorted = false;
-            break;
+            break; // exit the loop
           }
           i++;
         }
+        expect(sorted).to.be.true;
       });
   });
 });
