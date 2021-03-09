@@ -21,7 +21,7 @@ app.get("/apps", (req, res) => {
       return res
         .status(400)
         .send(
-          "Genres must be one of the following: Action, Arcade, Card, Casual, Puzzle, Strategy"
+          "Genres must be one of the following: action, arcade, card, casual, puzzle, strategy"
         );
     }
   }
@@ -65,6 +65,8 @@ app.get("/apps", (req, res) => {
   res.json(results);
 });
 
-app.listen(8000, () => {
-  console.log("Server started on PORT 8000 http://localhost:8000/apps");
-});
+// app.listen(8000, () => {
+// console.log("Server started on PORT 8000 http://localhost:8000/apps");
+// });
+
+module.exports = app;
